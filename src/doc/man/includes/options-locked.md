@@ -1,12 +1,14 @@
-{{#option "`--frozen`" "`--locked`"}}
-Either of these flags requires that the `Cargo.lock` file be
-up-to-date. If the lock file is missing, or it needs to be updated, Cargo will
-exit with an error. The `--frozen` flag also prevents Cargo from
-attempting to access the network to determine if it is out-of-date.
+{{#option "`--locked`"}}
+Ensures that Cargo uses the exact version of every dependency captured in the
+existing `Cargo.lock` file. Cargo will exit with an error when either of the
+following scenarios arises:
 
-These may be used in environments where you want to assert that the
-`Cargo.lock` file is up-to-date (such as a CI build) or want to avoid network
-access.
+* The lock file is missing.
+* The dependency resolution has changed, often caused by modifying dependencies
+  in the `Cargo.toml` file.
+
+It may be used in environments where you want to assert that the `Cargo.lock`
+file is up-to-date for reproducibility reasons, such as in a CI build.
 {{/option}}
 
 {{#option "`--offline`"}}
@@ -24,4 +26,8 @@ offline.
 {{/if}}
 
 May also be specified with the `net.offline` [config value](../reference/config.html).
+{{/option}}
+
+{{#option "`--frozen`"}}
+Equivalent to specifying both `--locked` and `--offline`.
 {{/option}}
