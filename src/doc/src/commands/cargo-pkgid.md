@@ -91,11 +91,16 @@ terminal.</li>
 
 
 <dt class="option-term" id="option-cargo-pkgid---locked"><a class="option-anchor" href="#option-cargo-pkgid---locked"></a><code>--locked</code></dt>
-<dd class="option-desc">Requires the <code>Cargo.lock</code> file be up-to-date. If the lock file is missing,
-or it needs to be updated due to changes in the <code>Cargo.toml</code> file, for example
-a new dependency is added, Cargo will exit with an error.</p>
+<dd class="option-desc">Ensures that Cargo uses the exact version of every dependency captured in the
+existing <code>Cargo.lock</code> file. Cargo will exit with an error when either of the
+following scenarios arises:</p>
+<ul>
+<li>The lock file is missing.</li>
+<li>The dependency resolution has changed, often caused by modifying dependencies
+in the <code>Cargo.toml</code> file.</li>
+</ul>
 <p>It may be used in environments where you want to assert that the <code>Cargo.lock</code>
-file is up-to-date (such as a CI build).</dd>
+file is up-to-date for reproducibility reasons, such as in a CI build.</dd>
 
 
 <dt class="option-term" id="option-cargo-pkgid---offline"><a class="option-anchor" href="#option-cargo-pkgid---offline"></a><code>--offline</code></dt>

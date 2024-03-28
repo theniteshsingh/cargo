@@ -640,7 +640,7 @@ See '<cyan,bold>cargo help</> <cyan><<command>></>' for more information on a sp
                 .value_parser(clap::builder::ValueParser::path_buf()),
         )
         .arg(
-            flag("locked", "Require Cargo.lock to be up-to-date")
+            flag("locked", "Ensure the exact dependency versions in Cargo.lock is used")
                 .help_heading(heading::MANIFEST_OPTIONS)
                 .global(true),
         )

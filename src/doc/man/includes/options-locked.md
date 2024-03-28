@@ -1,10 +1,14 @@
 {{#option "`--locked`"}}
-Requires the `Cargo.lock` file be up-to-date. If the lock file is missing,
-or it needs to be updated due to changes in the `Cargo.toml` file, for example
-a new dependency is added, Cargo will exit with an error.
+Ensures that Cargo uses the exact version of every dependency captured in the
+existing `Cargo.lock` file. Cargo will exit with an error when either of the
+following scenarios arises:
+
+* The lock file is missing.
+* The dependency resolution has changed, often caused by modifying dependencies
+  in the `Cargo.toml` file.
 
 It may be used in environments where you want to assert that the `Cargo.lock`
-file is up-to-date (such as a CI build).
+file is up-to-date for reproducibility reasons, such as in a CI build.
 {{/option}}
 
 {{#option "`--offline`"}}
